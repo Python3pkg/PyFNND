@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 import numpy as np
 import ctypes
 from ctypes import byref
@@ -145,13 +145,13 @@ def bench_trisolve():
         g = H.dot(x)
 
         start = time.time()
-        for _ in xrange(nreps):
+        for _ in range(nreps):
             xhat = trisolve(d1, d0, d1, g, inplace=False)
         t1 = (time.time() - start) / nreps
         norm1 = np.linalg.norm(x - xhat)
 
         start = time.time()
-        for _ in xrange(nreps):
+        for _ in range(nreps):
             xhat = sparse.linalg.spsolve(H, g)
         t2 = (time.time() - start) / nreps
         norm2 = np.linalg.norm(x - xhat)
